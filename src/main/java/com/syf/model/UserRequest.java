@@ -17,4 +17,3 @@ public record UserRequest(
         @Email(message = "Email should be valid")
         String email
 ) {}
-

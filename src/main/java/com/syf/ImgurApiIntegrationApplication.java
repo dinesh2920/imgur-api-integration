@@ -9,8 +9,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class ImgurApiIntegrationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ImgurApiIntegrationApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ImgurApiIntegrationApplication.class, args);
+    }
 
 }

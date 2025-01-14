@@ -67,7 +67,7 @@ public class ImageControllerIntegrationTest {
         InputStream inputStream = imageResource.getInputStream();
         MockMultipartFile mockImageFile = new MockMultipartFile("image", "test.jpg", "image/jpeg", inputStream);
 
-        mockMvc.perform(MockMvcRequestBuilders.multipart("/images/upload")
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/image")
                         .file(mockImageFile)
                         .header("Authorization", "Bearer " + validToken)
                         .contentType(MediaType.MULTIPART_FORM_DATA))
@@ -77,7 +77,7 @@ public class ImageControllerIntegrationTest {
 
     @Test
     void testViewImagesEndpoint() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/images/view")
+        mockMvc.perform(MockMvcRequestBuilders.get("/image")
                         .header("Authorization", "Bearer " + validToken)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

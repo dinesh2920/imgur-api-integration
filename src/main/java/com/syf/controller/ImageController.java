@@ -15,7 +15,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/images")
+@RequestMapping("/image")
 public class ImageController {
 
     private final ImageServiceImpl imgService;
@@ -27,7 +27,7 @@ public class ImageController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/upload")
+    @PostMapping
     public ResponseEntity<?> uploadImage(@RequestParam("image") @NotNull MultipartFile file,
                                          @RequestHeader("Authorization") @NotNull String accessToken) {
         String username = validateToken(accessToken);
@@ -40,7 +40,7 @@ public class ImageController {
         return ResponseEntity.ok(imageDetails);
     }
 
-    @GetMapping("/view")
+    @GetMapping
     public ResponseEntity<?> viewImages(@RequestHeader("Authorization") @NotNull String accessToken) {
         String username = validateToken(accessToken);
         log.info("Username extracted from token: {}", username);
@@ -52,7 +52,7 @@ public class ImageController {
         return ResponseEntity.ok(userImages);
     }
 
-    @DeleteMapping("/delete/{imageId}")
+    @DeleteMapping("/{imageId}")
     public ResponseEntity<?> deleteImageForAuthenticatedUser(@PathVariable @NotNull String imageId,
                                                              @RequestHeader("Authorization") @NotNull String accessToken) {
         validateToken(accessToken);
